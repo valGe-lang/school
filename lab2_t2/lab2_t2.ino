@@ -52,7 +52,6 @@ ISR(ADC_vect) {
     	//Combine the upper and lower registers for a result
     	value0[i0++] = ADCL | (ADCH << 8); 
     	ADMUX |= 1; //Switch channel to the second channel
-    	//ADCSRA |= (1 << ADSC);
     	status = 1; //Switch status for different channel
     	break;
     case 1:
@@ -60,7 +59,6 @@ ISR(ADC_vect) {
       //Combine the upper and lower registers for a result
     	value1[i1++] = ADCL | (ADCH << 8);
     	ADMUX &= 0xf0; //Switch back to the first channel
-    	//ADCSRA |= (1 << ADSC);
     	status = 0; //Switch status for different channel
     	break;
   }
